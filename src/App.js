@@ -6,6 +6,7 @@ import './styles.css';
 
 function App() {
   const [cart, setCart] = useState([]);
+  // const [page, setPage] = useState('home');
 
   const addToCart = (product) => {
     setCart((prevCart) => {
@@ -37,6 +38,15 @@ function App() {
     });
   }
 
+  // const render = (page) => {
+  //   setPage(page);
+  // };
+
+  function render(page) {
+    document.querySelectorAll('.page').forEach(el => el.style.display = 'none');
+    document.getElementById(page).style.display = 'block';
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -45,25 +55,25 @@ function App() {
           <h1 href="#" onClick={(e) => {render('home'); }}> Cozy Threads</h1>
         </div>
         <nav>
-          <a href="#" onClick={(e) => {render('home'); }}>
+          <a href="#" onClick={(e) => {render('home'); }} onLoad={(e) => {render('home'); }}>
             <img src={images.home} alt="Home Symbol"/>Store</a>
           <a href="#cart" onClick={(e) => {render('cart'); }}>
             <img src={images.cart} alt="Cart Symbol"/>Cart ({cart.reduce((total, item) => total + item.quantity, 0)})</a>
         </nav>
       </header>
       <main id="feed">
-        <ProductFeed addToCart={addToCart}/>
-        <ProductCart cart={cart} removeFromCart={removeFromCart}/>
+        {/* <div className="page" id="home" style={{display: page !== 'home' ?? 'none'}}> */}
+          <ProductFeed addToCart={addToCart}/>
+        {/* </div> */}
+        {/* <div className="page" id="cart" style={{display: page !== 'cart' ?? 'none'}}> */}
+          <ProductCart cart={cart} removeFromCart={removeFromCart}/>
+        {/* </div> */}
+        
         {/* <Checkout cart={cart} /> */}
 
       </main>
     </div>
   );
-
-  function render(page) {
-    document.querySelectorAll('.page').forEach(el => el.style.display = 'none');
-    document.getElementById(page).style.display = 'block';
-  }
 }
 
 export default App;
