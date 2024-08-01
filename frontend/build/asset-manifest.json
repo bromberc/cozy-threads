@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/cozy-threads/static/css/main.341e4d0b.css",
-    "main.js": "/cozy-threads/static/js/main.d1d2afb1.js",
+    "main.css": "/cozy-threads/static/css/main.82e4f9c5.css",
+    "main.js": "/cozy-threads/static/js/main.40f76f05.js",
     "static/js/453.09afee5b.chunk.js": "/cozy-threads/static/js/453.09afee5b.chunk.js",
     "static/media/home.png": "/cozy-threads/static/media/home.8b8837b370b9b5208290.png",
     "static/media/blackAndWhiteDress.png": "/cozy-threads/static/media/blackAndWhiteDress.6fe9fd24fec874d3b79e.png",
     "static/media/jeanDress.png": "/cozy-threads/static/media/jeanDress.b0e155fc8008473c6107.png",
     "static/media/greenShirt.png": "/cozy-threads/static/media/greenShirt.107e02d5703da272713a.png",
     "index.html": "/cozy-threads/index.html",
-    "main.341e4d0b.css.map": "/cozy-threads/static/css/main.341e4d0b.css.map",
-    "main.d1d2afb1.js.map": "/cozy-threads/static/js/main.d1d2afb1.js.map",
+    "main.82e4f9c5.css.map": "/cozy-threads/static/css/main.82e4f9c5.css.map",
+    "main.40f76f05.js.map": "/cozy-threads/static/js/main.40f76f05.js.map",
     "453.09afee5b.chunk.js.map": "/cozy-threads/static/js/453.09afee5b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.341e4d0b.css",
-    "static/js/main.d1d2afb1.js"
+    "static/css/main.82e4f9c5.css",
+    "static/js/main.40f76f05.js"
   ]
 }

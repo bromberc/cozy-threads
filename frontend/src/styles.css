@@ -40,6 +40,11 @@ main h2 {
     justify-content: center;
 }
 
+.success {
+    font-family: 'Shadows Into Light';
+    font-size: xx-large;
+}
+
 .Title-Container {
     display: flex;
     flex-direction: row;

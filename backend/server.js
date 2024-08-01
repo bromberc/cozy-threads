@@ -14,8 +14,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 const YOUR_DOMAIN = 'http://localhost:3000';
 
 app.post('/create-checkout-session', async (req, res) => {
-    console.log('Received req to create session');
-    console.log('Request body:', req.body);
     const line_items = req.body.items.map(item => ({
         price_data: {
             currency: 'usd',
@@ -32,11 +30,9 @@ app.post('/create-checkout-session', async (req, res) => {
             line_items: line_items,
             mode: 'payment',
             ui_mode: 'embedded',
-            return_url: `${YOUR_DOMAIN}/return?session_id={CHECKOUT_SESSION_ID}`,
-            //this needs to be created (page that just confirms the payment went through)
+            return_url: `${YOUR_DOMAIN}/success?session_id={CHECKOUT_SESSION_ID}`,
             automatic_tax: {enabled: true},
         });
-        console.log("checkout session created");
         res.send({clientSecret: session.client_secret});
     } catch (error) {
         console.log('Error creating checkout session: ', error);
@@ -44,7 +40,6 @@ app.post('/create-checkout-session', async (req, res) => {
 });
 
 app.get('/session-status', async (req, res) => {
-    console.log("calling app.get");
     const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
 
     res.send({

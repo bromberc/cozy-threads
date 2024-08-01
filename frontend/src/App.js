@@ -62,7 +62,7 @@ function App() {
       <main id="feed">
           <ToastContainer/>       
           <ProductFeed addToCart={addToCart}/>
-          <ProductCart cart={cart} removeFromCart={removeFromCart}/> 
+          <ProductCart cart={cart} removeFromCart={removeFromCart}/>
       </main>
     </div>
   );

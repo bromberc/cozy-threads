@@ -3,12 +3,15 @@ import * as React from 'react';
 import {loadStripe} from '@stripe/stripe-js';
 import {
   EmbeddedCheckoutProvider,
-  EmbeddedCheckout
+  EmbeddedCheckout,
+  PurchaseSummary
 } from '@stripe/react-stripe-js';
 const stripePromise = loadStripe('pk_live_51PhD3vRpA6VhXFHy5CdMHlEl7CtPIOHZ2Fu7dQunAd3K469wh3QlBpjBdN1q3EAom5VC66VTihMoO9dvEH1abBvk00hqBsWmcq');
 
 const Checkout = ({cart}) => {
     const [clientSecret, setClientSecret] = useState('');
+    const [isComplete, setIsComplete] = useState(false);
+    const handleComplete = () => setIsComplete(true);
     const fetchClientSecret = useCallback(async () => {
         try {
             const response = await fetch("http://localhost:4242/create-checkout-session", {
@@ -36,12 +39,12 @@ const Checkout = ({cart}) => {
     
     const options = { clientSecret };
 
-    return (
+    return isComplete ? (<PurchaseSummary />) : (
         <div id="checkout">
             {clientSecret && (
                 <EmbeddedCheckoutProvider
                     stripe={stripePromise}
-                    options={options}
+                    options={{...options, onComplete: handleComplete}}
                 >
                     <EmbeddedCheckout/>
                 </EmbeddedCheckoutProvider>
