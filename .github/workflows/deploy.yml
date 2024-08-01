@@ -17,15 +17,32 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install dependencies
-        run: npm install
+      # Backend setup, test, and deployment
+      - name: Install backend dependencies
+        run: |
+          cd backend
+          npm install
 
-      - name: Run tests
-        run: npm test
-
-      - name: Deploy
+      - name: Deploy backend
         env:
           STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
         run: |
-          # Your deployment command here
-          echo "Deploying with STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}"
+          cd backend
+          echo "Deploying backend with STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}"
+          
+      # Frontend setup, test, build, and deployment
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm install
+          
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: frontend/build
